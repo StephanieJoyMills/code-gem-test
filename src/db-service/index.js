@@ -1,5 +1,5 @@
-const {knex} = require('./knex')
+const { knex } = require("./knex");
 module.exports = {
-    ...require('./products'),
-    knex
-}
+  ...require("./products"),
+  knex
+};
