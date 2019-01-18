@@ -11,7 +11,7 @@ exports.getProducts = async (limit = 12, offset = 0, available) => {
       'products.inventory_count',
     )
     if (available){
-        query.where('products.inventory_counts', '>', 0);
+        query.where('products.inventory_count', '>', 0);
     }
     return await query;
 };
