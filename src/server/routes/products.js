@@ -22,7 +22,7 @@ module.exports = async function(app) {
     }
   });
 
-  app.patch("/purchase/product/:product_id", async (req, res, next) => {
+  app.patch("/product/:product_id/purchase", async (req, res, next) => {
     const productId = req.params.product_id;
     try {
       const currentInventory = await productInventory(productId);
