@@ -1,6 +1,8 @@
-exports.up = function(knex, Promise) {
+exports.up = async function(knex, Promise) {
+const exists = await knex.schema.hasTable('products')
+if (!exists) {
     return knex.schema
-    .createTableIfNotExists('products', function(table) {
+    .createTable('products', function(table) {
         table
             .uuid('id')
             .defaultTo(knex.raw('uuid_generate_v4()'))
@@ -20,8 +22,12 @@ exports.up = function(knex, Promise) {
             .timestamp('created_at')
             .notNullable()
             .defaultTo(knex.fn.now());
-      })
-      .raw(
+        table
+            .timestamp('updated_at')
+            .notNullable()
+            .defaultTo(knex.fn.now());
+    })
+    .raw(
         // add update_row_modified_function_()
         `CREATE OR REPLACE FUNCTION update_row_modified_function_()
             RETURNS TRIGGER
@@ -34,7 +40,7 @@ exports.up = function(knex, Promise) {
             $$
             language 'plpgsql';
             `,
-      )
+    )
         .raw(
         // add updated_at trigger
         `CREATE TRIGGER row_mod_on_set_slots_trigger_
@@ -44,7 +50,7 @@ exports.up = function(knex, Promise) {
             EXECUTE PROCEDURE update_row_modified_function_();
             `,
         );
-  
+    }
 };
 
 exports.down = function(knex, Promise) {
