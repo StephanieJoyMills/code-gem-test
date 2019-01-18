@@ -13,7 +13,7 @@ exports.up = function(knex, Promise) {
             .decimal('price',14,2)
             .notNullable();
         table
-            .integer('inventory',14,2)
+            .integer('inventory_count',14,2)
             .notNullable()
             .unsigned();
         table

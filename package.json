@@ -1,0 +1,31 @@
+{
+  "name": "shopify-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "knex": "^0.16.3",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.9",
+    "pg": "^7.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon src/server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StephanieJoyMills/shopify-challenge.git"
+  },
+  "author": "Stephanie Mills",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StephanieJoyMills/shopify-challenge/issues"
+  },
+  "homepage": "https://github.com/StephanieJoyMills/shopify-challenge#readme"
+}

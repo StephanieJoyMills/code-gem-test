@@ -6,7 +6,7 @@ const pool = {
   max: parseInt(process.env.MAX_DB_CONNECTION || 10, 10),
   idleTimeoutMillis: 20000,
 };
-console.log(process.env.PG_DB_NAME)
+
 module.exports = {
   development: {
   client: 'postgresql',
