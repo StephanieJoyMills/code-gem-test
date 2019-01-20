@@ -1,6 +1,8 @@
-Hello there! I completed this challenge using node.js paired with postgres. Knex.js served as the ORM, and postico as a client (optional)
+# Hello there!
 
-To test the API I use Postman, documentations for all the endpoints can be found here: \_\_\_\_
+I completed this challenge using Node.js paired with Postgres and Knex.js as the ORM and Postico as the client.
+
+Documentation (using postman) for all the endpoints can be found here: https://documenter.getpostman.com/view/2117258/RzteSruv
 
 # Postgres set-up
 
@@ -27,15 +29,25 @@ To exit psql: `\q`
 Download at: https://eggerapps.at/postico/download/
 Connecting to local db: select `New Favorite` add pw, and select **Show all Databases**, click `Done` and then `Connect`
 
-# Set-up
+# Project Set-up
 
 install dependencies: `npm install`
 run migrations: `knex migrate:latest`
 run seeds: `knex seed:run`
 start nodemon: `npm start nodemon` or just `npm start` to run without the demon
 
-Head over to postman: to see documentation on the various endpoints available
+Head over to postman to get started!
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d4cddeb5d988215021c9)
 
 # Notes
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d4cddeb5d988215021c9)
+The `Get products` endpoint will fetch items one at a time or all at once depending on the use of limit and offset.
+
+Products can be purchased both directly and after being added to a cart. I'm assuming if a product has no inventory it will simply be left in the cart. I also am not deleting the cart after completion.
+
+There were alot of features I would of loved to add and several elmentes I would of liked to imporove on such as:
+
+- Security (JWT, better error handling/checking, proper logging, etc)
+- Database (improve design i.e. a user table, read and write database)
+- Better docs (better comments on the code, error examples)
+- Tests <- <- <-

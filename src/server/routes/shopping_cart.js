@@ -27,7 +27,7 @@ module.exports = async function(app) {
         {
           err
         },
-        "Failed to retrieve cart data"
+        "Failed to checkout cart"
       );
       next(err);
     }
@@ -38,7 +38,7 @@ module.exports = async function(app) {
 
     try {
       const cart = await getCart(cartId);
-      return res.send(cart);
+      res.send(cart);
     } catch (err) {
       console.log(
         {
@@ -106,14 +106,13 @@ module.exports = async function(app) {
       }
 
       const addToCart = await addProductToCart(cartId, productId);
-      console.log(`Added to Cart!`);
       res.send(addToCart);
     } catch (err) {
       console.log(
         {
           err
         },
-        "Failed to ceate a cart"
+        "Failed to add item to cart"
       );
       next(err);
     }

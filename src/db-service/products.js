@@ -1,6 +1,6 @@
 const { knex } = require("./knex");
 
-exports.getProducts = async (limit, offset = 0, available) => {
+exports.getProducts = async (limit = 10, offset = 0, available) => {
   let query = knex("products")
     .orderBy(["created_at"], "desc")
     .limit(limit)
