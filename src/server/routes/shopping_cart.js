@@ -2,24 +2,59 @@ const {
   createCart,
   checkIfHasCart,
   checkIfProductInCart,
-  addProductToCart
+  addProductToCart,
+  getCart,
+  productInventory,
+  checkoutCart
 } = require("../../db-service");
 
 module.exports = async function(app) {
-  // Add to cart
-  // is it in the cart already? if yes, increase the quanitity
-  // Get Cart - total, products
-  // Checkout
-  //DONE Create Cart
-  // remove item
-  //change quanitity -> if 0 remve item
+  app.patch("/cart/:cart_id/checkout", async (req, res, next) => {
+    const cartId = req.params.cart_id;
+
+    try {
+      const products = await getCart(cartId, false);
+
+      if (products[0].id === null) {
+        res.send({ err: "cart is empty" });
+        return;
+      }
+
+      await checkoutCart(products);
+      res.sendStatus(204);
+    } catch (err) {
+      console.log(
+        {
+          err
+        },
+        "Failed to retrieve cart data"
+      );
+      next(err);
+    }
+  });
+
+  app.get("/cart/:cart_id", async (req, res, next) => {
+    const cartId = req.params.cart_id;
+
+    try {
+      const cart = await getCart(cartId);
+      return res.send(cart);
+    } catch (err) {
+      console.log(
+        {
+          err
+        },
+        "Failed to retrieve cart data"
+      );
+      next(err);
+    }
+  });
 
   app.post("/cart/create", async (req, res, next) => {
     const { name, email } = req.body;
     try {
       // check if email already attached to cart
       const hasCart = await checkIfHasCart(email);
-      console.log(hasCart);
       if (hasCart) {
         const err = { err: `${email} already has a cart` };
         console.log(err);
@@ -46,7 +81,22 @@ module.exports = async function(app) {
     const productId = req.params.product_id;
     console.log(cartId);
     try {
-      // check if already in car
+      const currentInventory = await productInventory(productId);
+      console.log(currentInventory);
+
+      if (!currentInventory) {
+        const err = { err: `Product:${productId} is an invalid item` };
+        console.log(err);
+        res.status(404).send(err);
+      }
+
+      if (currentInventory.inventory_count < 1) {
+        const err = { err: `Product:${productId} is out of stock` };
+        console.log(err);
+        res.status(400).send(err);
+        return;
+      }
+      // check if already in cart
       const inCart = await checkIfProductInCart(cartId, productId);
       if (inCart) {
         const err = { err: `Item already in cart` };

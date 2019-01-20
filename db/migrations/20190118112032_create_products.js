@@ -24,7 +24,6 @@ exports.up = async function(knex, Promise) {
       })
       .raw(`ALTER TABLE products ADD CHECK (inventory_count >= 0);`)
       .raw(
-        // add update_row_modified_function_()
         `CREATE OR REPLACE FUNCTION update_row_modified_function_()
             RETURNS TRIGGER
             AS
@@ -38,7 +37,6 @@ exports.up = async function(knex, Promise) {
             `
       )
       .raw(
-        // add updated_at trigger
         `CREATE TRIGGER row_mod_on_set_slots_trigger_
             BEFORE UPDATE
             ON products
