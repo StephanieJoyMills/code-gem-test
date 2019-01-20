@@ -30,8 +30,12 @@ Connecting to local db: select `New Favorite` add pw, and select **Show all Data
 # Set-up
 
 install dependencies: `npm install`
+run migrations: `knex migrate:latest`
+run seeds: `knex seed:run`
 start nodemon: `npm start nodemon` or just `npm start` to run without the demon
 
-Head over to postman: \_\_ to see documentation on the various endpoints available
+Head over to postman: to see documentation on the various endpoints available
 
 # Notes
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d4cddeb5d988215021c9)

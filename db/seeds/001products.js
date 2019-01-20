@@ -5,8 +5,18 @@ exports.seed = function(knex, Promise) {
     .then(function() {
       // Inserts seed entries
       return knex("products").insert([
-        { title: "Cat Tree", price: 70.99, inventory_count: 13 },
-        { title: "Large Mouse Toy", price: 10.99, inventory_count: 18 },
+        {
+          id: "7ba92c67-9b97-483b-8de8-874addf4ea89",
+          title: "Cat Tree",
+          price: 70.99,
+          inventory_count: 13
+        },
+        {
+          id: "ef981413-8dac-41f6-8e49-7dfffba4e183",
+          title: "Large Mouse Toy",
+          price: 10.99,
+          inventory_count: 12
+        },
         { title: "Small Mouse Toy", price: 1.99, inventory_count: 116 },
         { title: "Food Bowls", price: 20.99, inventory_count: 0 },
         { title: "Scratching Pole", price: 22.99, inventory_count: 5 },
