@@ -1,8 +1,4 @@
-# Hello there!
-
-I completed this challenge using Node.js paired with Postgres and Knex.js as the ORM and Postico as the client.
-
-Documentation (using postman) for all the endpoints can be found here: https://documenter.getpostman.com/view/2117258/RzteSruv
+# TEST REPO FOR CODE GEM - based on shopify challenge
 
 ## Postgres set-up
 
