@@ -1,22 +1,25 @@
-# TEST REPO FOR CODE GEM - based on shopify challenge
+# TEST REPO FOR CODE GEM
+
+- based on shopify challenge
+- test PR
 
 ## Postgres set-up
 
 #### Installation
 
-Install Postgres with homebrew: `brew install postgresql`     
-Check version: `postgres -V`    
+Install Postgres with homebrew: `brew install postgresql`  
+Check version: `postgres -V`
 
 #### Using and Configuring PostgreSQL
 
-Create our db: `createdb shopify-challenge`   
-Open up psql utility: `psql postgres`   
-(Optional) set password: `\password`   
-Check to make sure our db was created: `\list`   
+Create our db: `createdb shopify-challenge`  
+Open up psql utility: `psql postgres`  
+(Optional) set password: `\password`  
+Check to make sure our db was created: `\list`
 
-*Other useful commands:*   
-To drop our db: `dropdb`   
-To exit psql: `\q`   
+_Other useful commands:_  
+To drop our db: `dropdb`  
+To exit psql: `\q`
 
 #### (Optional) Postico
 
@@ -27,10 +30,10 @@ Connecting to local db: select `New Favorite` add pw, and select **Show all Data
 
 ## Project Set-up
 
-install dependencies: `npm install`   
-run migrations: `knex migrate:latest`   
-run seeds: `knex seed:run`   
-start nodemon: `npm start nodemon` or just `npm start` to run without the demon    
+install dependencies: `npm install`  
+run migrations: `knex migrate:latest`  
+run seeds: `knex seed:run`  
+start nodemon: `npm start nodemon` or just `npm start` to run without the demon
 
 Head over to postman to get started!
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d4cddeb5d988215021c9)
