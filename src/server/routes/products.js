@@ -1,10 +1,27 @@
 const {
   getProducts,
   productInventory,
-  purchaseProduct
+  purchaseProduct,
 } = require("../../db-service");
 
-module.exports = async function(app) {
+module.exports = async function (app) {
+  app.get("/test-pr-route", async (req, res, next) => {
+    const { limit, offset, available } = req.query;
+
+    try {
+      const products = await getProducts(limit, offset, available);
+      res.send({ products });
+    } catch (err) {
+      console.log(
+        {
+          err,
+        },
+        "Failed to retrieve product data"
+      );
+      next(err);
+    }
+  });
+
   app.get("/products", async (req, res, next) => {
     const { limit, offset, available } = req.query;
 
@@ -14,7 +31,7 @@ module.exports = async function(app) {
     } catch (err) {
       console.log(
         {
-          err
+          err,
         },
         "Failed to retrieve product data"
       );
@@ -55,7 +72,7 @@ module.exports = async function(app) {
     } catch (err) {
       console.log(
         {
-          err
+          err,
         },
         `Failed to purchase product: ${productId}`
       );
